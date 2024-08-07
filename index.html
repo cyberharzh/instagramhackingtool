@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Hack Tool</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #8e44ad;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        input, button {
+            padding: 15px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 80%;
+            max-width: 300px;
+        }
+        input {
+            background-color: #1c1c1c;
+            color: #8e44ad;
+        }
+        button {
+            background-color: #8e44ad;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #732d91;
+        }
+        .loading {
+            display: none;
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+        .loading span {
+            display: inline-block;
+            animation: blink 1.4s infinite both;
+        }
+        .loading span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .loading span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes blink {
+            0%, 20%, 50%, 80%, 100% {
+                opacity: 1;
+            }
+            40% {
+                opacity: 0;
+            }
+            60% {
+                opacity: 0;
+            }
+        }
+        video {
+            margin-top: 20px;
+            display: none;
+        }
+        .error {
+            color: #ff4d4d;
+            margin: 20px 0;
+        }
+        .final-message {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #8e44ad;
+        }
+        #roadMapButton {
+            display: none;
+            background-color: #8e44ad;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="accessContainer">
+        <h1>Access Required</h1>
+        <p>Enter the access key to use the tool:</p>
+        <input type="text" id="accessKey" placeholder="Access Key">
+        <button onclick="checkAccessKey()">Submit</button>
+        <div class="error" id="error" style="display:none;">Invalid access key!</div>
+    </div>
+
+    <div class="container" id="hackToolContainer" style="display:none;">
+        <h1>Advanced Hack Tool</h1>
+        <p>Enter the username of the account you want to hack:</p>
+        <input type="text" id="username" placeholder="Username">
+        <button onclick="prankHack()">Hack</button>
+        <div class="loading" id="loading">Hacking<span>.</span><span>.</span><span>.</span></div>
+        <video id="prankVideo" width="320" height="240" autoplay loop>
+            <source src="encryption_process.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p id="shareMessage" style="display:none;">Share with your friends!</p>
+        <p id="finalMessage" class="final-message" style="display:none;">Made by my team Cyberharzh</p>
+        <button id="roadMapButton" onclick="redirectToRoadMap()">Cybersecurity Road Map</button>
+    </div>
+
+    <script>
+        function checkAccessKey() {
+            const accessKey = document.getElementById('accessKey').value;
+            if (accessKey === '7712') {
+                document.getElementById('accessContainer').style.display = 'none';
+                document.getElementById('hackToolContainer').style.display = 'flex';
+                document.getElementById('error').style.display = 'none';
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function prankHack() {
+            const username = document.getElementById('username').value;
+            if (username) {
+                document.getElementById('loading').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                    const video = document.getElementById('prankVideo');
+                    video.style.display = 'block';
+                    video.play();
+                    document.getElementById('shareMessage').style.display = 'block';
+                    document.getElementById('finalMessage').style.display = 'block'; // Show final message immediately
+                    document.getElementById('roadMapButton').style.display = 'block'; // Show button immediately
+                }, 3000); // Simulates hacking time
+            }
+        }
+
+        function redirectToRoadMap() {
+            window.location.href = 'https://roadmap.sh/cyber-security'; // Replace with your actual link
+        }
+    </script>
+</body>
+</html>
